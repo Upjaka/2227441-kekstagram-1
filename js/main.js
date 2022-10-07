@@ -1,14 +1,15 @@
-function getRandom(min, max) {
-  if (min >= max || min < 0) {
-    throw new Error('Invalid input data');
-  }
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function getRandom(a, b) {
+  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
 }
 
 getRandom(0, 1);
 
-function isCorrectString(comment, maxLength) {
-  return comment.legth <= maxLength;
+function checkStringLength(string, length) {
+  return string.length <= length;
 }
 
-isCorrectString('comment', 10);
+checkStringLength('comment', 10);
