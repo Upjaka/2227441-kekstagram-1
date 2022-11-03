@@ -3,11 +3,7 @@ const img = bigPicture.querySelector('.big-picture__img').querySelector('img');
 const commentTemplate = bigPicture.querySelector('#comment-template').content;
 
 document.addEventListener('keydown', (evt) => {
-  // eslint-disable-next-line no-console
-  console.log('cancel');
   if (evt.keyCode === 27) {
-    // eslint-disable-next-line no-console
-    console.log('ecs');
     bigPicture.classList.add('hidden');
     document.body.classList.remove('modal-open');
   }
