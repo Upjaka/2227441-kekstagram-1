@@ -20,13 +20,26 @@ pristine.addValidator(
 
 function validHashtags(hashtags) {
   const re = /^#[A-Za-zА-яа-яЁё0-9]{1,19}( #[A-Za-zА-яа-яЁё0-9]{1,19}){0,4}$/;
-  return re.test(hashtags);
+  // eslint-disable-next-line eqeqeq
+  return re.test(hashtags) || hashtags == '';
 }
 
 pristine.addValidator(
   textHashtags,
   validHashtags,
   'Некорректный хэштег'
+);
+
+function validRepeatedTags(hashtags) {
+  const text = hashtags.split(' ');
+  const tags = text.filter((number, index, numbers) => numbers.indexOf(number) !== index);
+  return tags.length === 0;
+}
+
+pristine.addValidator(
+  textHashtags,
+  validRepeatedTags,
+  'Повторяющиеся хэштеги'
 );
 
 form.addEventListener('submit', (evt) => {
